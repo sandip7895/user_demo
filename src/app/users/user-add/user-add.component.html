@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    .card {
+        padding: 20px 20px;
+        border: 0;
+    }
+
+    .card-heading {
+        padding-bottom: 15px;
+    }
+
+    .pull-right {
+        float: right;
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .col-md-5 {
+        margin: 110px auto 0 auto;
+    }
+</style>
+<div class="container-fluid">
+    <form name="form" (ngSubmit)="userform.form.valid && SaveUser(userform)" #userform="ngForm" novalidate>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-heading">
+                        <h4 class="card-title pull-left">Create User</h4>
+                        <a class="pull-right" routerLink="/user-list/">
+                            < Back to list</a>
+                    </div>
+                    <div class="card-block">
+                        <div class="mrg-top-20">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="name">Name*</label>
+                                                <input autocomplete="off" type="text" class="form-control" name="name"
+                                                    [(ngModel)]="userObj.name" #name="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && name.invalid }"
+                                                    required />
+                                                <div *ngIf="userform.submitted && name.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="name.errors.required">Name is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="job">Job*</label>
+                                                <input autocomplete="off" type="text" class="form-control" name="job"
+                                                    [(ngModel)]="userObj.job" #job="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && job.invalid }"
+                                                    required />
+                                                <div *ngIf="userform.submitted && job.invalid" class="invalid-feedback">
+                                                    <div *ngIf="job.errors.required">job is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12 text-center">
+                                            <div class="submit_comon_btn mrg-top-5">
+                                                <button type="submit"
+                                                    class="btn submit_btn text-uppercase">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

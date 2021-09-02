@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    .links a {
+        padding: 20px 30px;
+        display: inline-block;
+    }
+
+    table {
+        width: 95%;
+        margin: 0 auto;
+        border: 1px solid #dee2e6;
+    }
+</style>
+<div class="links">
+    <a routerLink="/user-add">Create User</a> | <a routerLink="/user-form-validation">User validation form</a> | <a
+        href="javascrip:void(0)" (click)="logout()">Logout</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>
+                <a routerLink="/user-add/{{user.id}}">Edit</a> &nbsp; &nbsp;
+                <a href="javascript:void(0)" (click)="Deletedealer(user.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <ng-container *ngIf="dealer_list && dealer_list.length > 0">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(1,1)">First</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(pager.currentPage - 1,1)">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a class="page-link" (click)="setPage(page,1)">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.currentPage + 1,1)">Next</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.totalPages,1)">Last</a>
+        </li>
+    </ul>
+</ng-container> -->

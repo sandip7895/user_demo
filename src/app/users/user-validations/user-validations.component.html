@@ -1,0 +1,168 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    .card {
+        padding: 20px 20px;
+        border: 0;
+    }
+
+    .card-heading {
+        padding-bottom: 15px;
+    }
+
+    .pull-right {
+        float: right;
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .col-md-5 {
+        margin: 0 auto 0 auto;
+    }
+</style>
+<div class="container-fluid">
+    <form name="form" (ngSubmit)="userform.form.valid && SaveUser(userform)" #userform="ngForm" novalidate>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-heading ">
+                        <h4 class="card-title pull-left">Validation user form</h4>
+                        <a class="pull-right" routerLink="/user-list/">
+                            < Back to list</a>
+                    </div>
+                    <div class="card-block">
+                        <div class="mrg-top-20">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="first_name">First Name*</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="first_name" [(ngModel)]="userObj.first_name"
+                                                    #first_name="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && first_name.invalid }"
+                                                    required />
+                                                <div *ngIf="userform.submitted && first_name.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="first_name.errors.required">First name is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="last_name">Last Name*</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="last_name" [(ngModel)]="userObj.last_name"
+                                                    #last_name="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && last_name.invalid }"
+                                                    required />
+                                                <div *ngIf="userform.submitted && last_name.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="last_name.errors.required">Last name is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="user_name">User Name*</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="user_name" [(ngModel)]="userObj.user_name"
+                                                    #user_name="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && user_name.invalid }"
+                                                    required />
+                                                <div *ngIf="userform.submitted && user_name.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="user_name.errors.required">User name is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="phone">Phone No</label>
+                                                <input autocomplete="off" type="text" class="form-control" name="phone"
+                                                    [(ngModel)]="userObj.phone" #phone="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && phone.invalid }"
+                                                    pattern="[0-9]{10}" (keypress)="numberOnly($event)" required />
+                                                <div *ngIf="userform.submitted && phone.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="phone.errors && phone.errors.required">Valid phone
+                                                        number is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="email">Email*</label>
+                                                <input autocomplete="off" type="email" class="form-control" email
+                                                    name="email" [(ngModel)]="userObj.email" #email="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && email.invalid }"
+                                                    pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                                                    required />
+                                                <div *ngIf="userform.submitted && email.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="email.errors">Invalid emial.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="address">address</label>
+                                                <textarea class="form-control" name="address"
+                                                    [(ngModel)]="userObj.address" #address="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && address.invalid }"
+                                                    rows="2" required></textarea>
+                                                <div *ngIf="userform.submitted && address.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="address.errors">Invalid address.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="pincode">Pincode</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="pincode" [(ngModel)]="userObj.pincode" #pincode="ngModel"
+                                                    pattern="[0-9]{6}" (keypress)="numberOnly($event)" required
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && pincode.invalid }" />
+                                                <div *ngIf="userform.submitted && pincode.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="pincode.errors && pincode.errors.required">Valid pincode
+                                                        is required.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="submit_comon_btn mrg-top-5">
+                                                <button type="submit"
+                                                    class="btn submit_btn text-uppercase">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

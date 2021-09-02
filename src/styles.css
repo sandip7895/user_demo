@@ -1,0 +1,11 @@
+.mat-snack-bar-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.submit_btn{
+    background-color: #000 !important;
+    color: #fff !important;
+}

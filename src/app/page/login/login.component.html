@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<br />
+<div class="app-container loginwrapper">
+    <div class="loginLogoWrap loginTextWrap">
+        <h2 class="font-22">Keep Log in to continue</h2>
+    </div>
+    <form name="form" (ngSubmit)="SubmitLogin(frmLogin)" #frmLogin="ngForm" novalidate>
+        <div class="col-md-12" style="padding: 0 36%;">
+            <div class="">
+                <div class="card-block">
+                    <div class="mrg-top-20">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input autocomplete="off" type="email" class="form-control" name="email"
+                                    [(ngModel)]="objlogin.email" #email="ngModel"
+                                    [ngClass]="{ 'is-invalid': userform.submitted && email.invalid }" required />
+                                <div *ngIf="userform.submitted && email.invalid" class="invalid-feedback">
+                                    <div *ngIf="email.errors.required">email is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input autocomplete="off" type="password" class="form-control" name="password"
+                                    [(ngModel)]="objlogin.password" #password="ngModel"
+                                    [ngClass]="{ 'is-invalid': userform.submitted && password.invalid }" required />
+                                <div *ngIf="userform.submitted && password.invalid" class="invalid-feedback">
+                                    <div *ngIf="password.errors.required">password is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <div class="submit_comon_btn mrg-top-5">
+                            <button type="submit" class="btn submit_btn text-uppercase">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
