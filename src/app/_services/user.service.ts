@@ -36,7 +36,7 @@ export class UserService {
     }
 
     login_with_email(data): Observable<any> {
-        const url = environment.apiUrl + 'Services/login_with_otp';
+        const url = environment.apiUrl_2 + 'Services/login_with_otp';
         let body = new HttpParams();
         body = body.append('mobile', data.mobile);
         body = body.append('dial_code', "91");

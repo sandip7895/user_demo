@@ -47,25 +47,6 @@ export class AppComponent implements OnInit {
         return data;
     }
 
-
-    changeOfRoutes() {
-        var headerArr = this.getTitle(this.router.routerState, this.router.routerState.root);
-        var header = headerArr[headerArr.length - 1];
-        if (header == "main") {
-            this.isBack = false;
-        }
-        else {
-            this.isBack = true;
-        }
-
-        if (header == "noheader") {
-            this.noheader = true;
-        }
-        else {
-            this.noheader = false;
-        }
-
-    }
 }
 
 
