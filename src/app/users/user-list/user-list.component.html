@@ -16,30 +16,41 @@
     }
 </style>
 <div class="links">
-    <a routerLink="/user-add">Create User</a> | <a routerLink="/user-form-validation">User validation form</a> | <a
-        href="javascrip:void(0)" (click)="logout()">Logout</a>
+    <a routerLink="/user-add">Create User</a>
 </div>
 <table class="table">
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>Employee Age</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.first_name}}</td>
-            <td>{{user.last_name}}</td>
-            <td>{{user.email}}</td>
+        <tr *ngFor="let user of users; let i = index">
+            <td>{{user.employee_name}}</td>
+            <td>{{user.employee_salary}}</td>
+            <td>{{user.employee_age}}</td>
             <td>
                 <a routerLink="/user-add/{{user.id}}">Edit</a> &nbsp; &nbsp;
-                <a href="javascript:void(0)" (click)="Deletedealer(user.id)">Delete</a>
+                <a href="javascript:void(0)" (click)="Deletedealer(i, user.id)">Delete</a>
             </td>
         </tr>
     </tbody>
 </table>
+
+
+<!-- <table mat-table [dataSource]="listData" class="mat-elevation-z8">
+    <ng-container matColumnDef="employee_name">
+        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+        <td mat-cell *matCellDef="let element"> {{element}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
+
+
 
 <!-- <ng-container *ngIf="dealer_list && dealer_list.length > 0">
     <ul *ngIf="pager.pages && pager.pages.length" class="pagination">

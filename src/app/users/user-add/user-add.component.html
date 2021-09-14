@@ -31,7 +31,7 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-heading">
-                        <h4 class="card-title pull-left">Create User</h4>
+                        <h4 class="card-title pull-left">Create Employee</h4>
                         <a class="pull-right" routerLink="/user-list/">
                             < Back to list</a>
                     </div>
@@ -42,14 +42,15 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Name*</label>
-                                                <input autocomplete="off" type="text" class="form-control" name="name"
-                                                    [(ngModel)]="userObj.name" #name="ngModel"
-                                                    [ngClass]="{ 'is-invalid': userform.submitted && name.invalid }"
+                                                <label for="employee_name">Name*</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="employee_name" [(ngModel)]="userObj.employee_name"
+                                                    #employee_name="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && employee_name.invalid }"
                                                     required />
-                                                <div *ngIf="userform.submitted && name.invalid"
+                                                <div *ngIf="userform.submitted && employee_name.invalid"
                                                     class="invalid-feedback">
-                                                    <div *ngIf="name.errors.required">Name is required</div>
+                                                    <div *ngIf="employee_name.errors.required">Name is required</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,13 +58,33 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="job">Job*</label>
-                                                <input autocomplete="off" type="text" class="form-control" name="job"
-                                                    [(ngModel)]="userObj.job" #job="ngModel"
-                                                    [ngClass]="{ 'is-invalid': userform.submitted && job.invalid }"
+                                                <label for="employee_salary">Salary*</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="employee_salary" [(ngModel)]="userObj.employee_salary"
+                                                    #employee_salary="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && employee_salary.invalid }"
                                                     required />
-                                                <div *ngIf="userform.submitted && job.invalid" class="invalid-feedback">
-                                                    <div *ngIf="job.errors.required">job is required</div>
+                                                <div *ngIf="userform.submitted && employee_salary.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="employee_salary.errors.required">Salary is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="employee_age">Age*</label>
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="employee_age" [(ngModel)]="userObj.employee_age"
+                                                    #employee_age="ngModel"
+                                                    [ngClass]="{ 'is-invalid': userform.submitted && employee_age.invalid }"
+                                                    required />
+                                                <div *ngIf="userform.submitted && employee_age.invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="employee_age.errors.required">Age is required
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

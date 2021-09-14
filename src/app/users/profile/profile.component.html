@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<br />
+<div class="app-container loginwrapper">
+    <div class="loginLogoWrap loginTextWrap">
+        <h2 class="font-22">Update Profile</h2>
+    </div>
+    <form name="form" (ngSubmit)="SubmitProfile(frmprofile)" #frmprofile="ngForm" novalidate>
+        <div class="col-md-12" style="padding: 0 36%;">
+            <div class="">
+                <div class="card-block">
+                    <div class="mrg-top-20">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input autocomplete="off" type="email" class="form-control" name="email"
+                                    [(ngModel)]="profileObj.email" #email="ngModel"
+                                    [ngClass]="{ 'is-invalid': frmprofile.submitted && email.invalid }" required />
+                                <div *ngIf="frmprofile.submitted && email.invalid" class="invalid-feedback">
+                                    <div *ngIf="email.errors.required">email is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <div class="submit_comon_btn mrg-top-5">
+                            <button type="submit" class="btn submit_btn text-uppercase">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

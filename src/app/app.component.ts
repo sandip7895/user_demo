@@ -2,7 +2,8 @@ import { ConstantPool } from '@angular/compiler';
 import { Location } from '@angular/common';
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { UserService } from './_services/user.service';
 
 @Component({
     selector: 'app-root',
@@ -12,16 +13,26 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit {
     title = 'user-demo';
 
+    data: Observable<any>;
+    login_user: any;
     constructor(
         private router: Router,
         private _location: Location,
         public route: ActivatedRoute,
+        private UserService: UserService,
     ) {
         router.events.subscribe(event => {
         });
     }
 
+
     ngOnInit() {
+    }
+
+    logout() {
+        localStorage.setItem("login_id", "");
+        localStorage.setItem("email", "");
+        this.router.navigate(['']);
     }
 
     getTitle(state, parent) {

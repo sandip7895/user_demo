@@ -17,8 +17,8 @@
                                 <label for="email">Email</label>
                                 <input autocomplete="off" type="email" class="form-control" name="email"
                                     [(ngModel)]="objlogin.email" #email="ngModel"
-                                    [ngClass]="{ 'is-invalid': userform.submitted && email.invalid }" required />
-                                <div *ngIf="userform.submitted && email.invalid" class="invalid-feedback">
+                                    [ngClass]="{ 'is-invalid': frmLogin.submitted && email.invalid }" required />
+                                <div *ngIf="frmLogin.submitted && email.invalid" class="invalid-feedback">
                                     <div *ngIf="email.errors.required">email is required</div>
                                 </div>
                             </div>
@@ -28,12 +28,27 @@
                                 <label for="password">Password</label>
                                 <input autocomplete="off" type="password" class="form-control" name="password"
                                     [(ngModel)]="objlogin.password" #password="ngModel"
-                                    [ngClass]="{ 'is-invalid': userform.submitted && password.invalid }" required />
-                                <div *ngIf="userform.submitted && password.invalid" class="invalid-feedback">
+                                    [ngClass]="{ 'is-invalid': frmLogin.submitted && password.invalid }" required />
+                                <div *ngIf="frmLogin.submitted && password.invalid" class="invalid-feedback">
                                     <div *ngIf="password.errors.required">password is required</div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group" (click)="openPopup()">
+
+                                <input autocomplete="off" id="remember_me" type="checkbox" class="form-control"
+                                    name="remember_me" [(ngModel)]="objlogin.remember_me" #remember_me="ngModel"
+                                    [ngClass]="{ 'is-invalid': frmLogin.submitted && remember_me.invalid }" required
+                                    style="width: auto; float: left; outline: none;height: 26px;
+                                    margin-right: 10px;" />
+                                <label for="remember_me" style="margin: 0;">Terms and condition</label>
+                                <div *ngIf="frmLogin.submitted && remember_me.invalid" class="invalid-feedback">
+                                    <div *ngIf="remember_me.errors.required">Terms and condition is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="col-md-12 col-xs-12 text-center">
                         <div class="submit_comon_btn mrg-top-5">
@@ -44,4 +59,25 @@
             </div>
         </div>
     </form>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" style="display: block;
+background: #00000038;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Terms Conditions Popup</h4>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo ea vitae et quas repudiandae dolorem
+                    nisi neque quos magni, delectus laudantium sequi, harum numquam officia. Inventore doloremque maxime
+                    similique vitae?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

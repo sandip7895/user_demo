@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl_2: 'https://reqres.in/',
+    apiUrl: 'http://dummy.restapiexample.com/api/v1/',
     baseUrl: 'http://localhost:4200/:4200/'
 };
 

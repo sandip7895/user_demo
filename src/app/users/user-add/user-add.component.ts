@@ -31,8 +31,9 @@ export class UserAddComponent implements OnInit {
                 var response = JSON.parse(JSON.stringify(res));
                 if (response.data) {
                     this.userObj.id = response.data.id;
-                    this.userObj.name = response.data.first_name + ' ' + response.data.last_name;
-                    this.userObj.job = "test";
+                    this.userObj.employee_name = response.data.employee_name;
+                    this.userObj.employee_salary = response.data.employee_salary;
+                    this.userObj.employee_age = response.data.employee_age;
                 }
             });
         }
@@ -41,15 +42,16 @@ export class UserAddComponent implements OnInit {
     isSubmitted = false;
     SaveUser(form: NgForm) {
         this.isSubmitted = true;
-
         if (!form.valid) {
             return false;
         } else {
+            this._snackBar.open("successfully Saved", "", { duration: 3000 });
+            this.router.navigateByUrl("user-list");
             this.UserService.create_user(this.userObj).subscribe(res => {
                 var response = JSON.parse(JSON.stringify(res));
-                if (response.data || response.id) {
+                if (response.status == "success") {
                     this.isSubmitted = false;
-                    this._snackBar.open("User successfully saved", "", { duration: 1000 });
+                    this._snackBar.open(response.message, "", { duration: 3000 });
                     this.router.navigateByUrl("user-list");
                 }
                 else {

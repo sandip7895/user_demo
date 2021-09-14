@@ -1,0 +1,19 @@
+<style>
+    .links a {
+        padding: 20px 30px;
+        display: inline-block;
+    }
+
+    table {
+        width: 95%;
+        margin: 0 auto;
+        border: 1px solid #dee2e6;
+    }
+</style>
+<div class="links header">
+    <div style="float: right;">
+        <a>{{UserName$ | async}}</a> | <a routerLink="/profile">Profile</a> | <a href="javascrip:void(0)"
+            (click)="logout()">Logout</a>
+    </div>
+    <div class="clearfix"></div>
+</div>

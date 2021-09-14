@@ -57,6 +57,8 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
 import { UserValidationsComponent } from './users/user-validations/user-validations.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { HeaderComponent } from './include/header/header.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { UserValidationsComponent } from './users/user-validations/user-validati
     LoginComponent,
     UserListComponent,
     UserAddComponent,
-    UserValidationsComponent
+    UserValidationsComponent,
+    ProfileComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

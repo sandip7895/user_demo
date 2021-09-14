@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../_services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -24,6 +23,7 @@ export class LoginComponent implements OnInit {
     public queryParams: any = {};
 
     objlogin: any = {
+        remember_me: false,
     }
 
     private login_id = "";
@@ -54,10 +54,25 @@ export class LoginComponent implements OnInit {
             this.isSubmitted = false;
             return false;
         } else {
-            if (this.objlogin) {
+            if ((this.objlogin.email == "samcom@gmail.com" && this.objlogin.password == "123") || (this.objlogin.email == "samcomTechnobrains@gmail.com" && this.objlogin.password == "sam123@")) {
                 localStorage.setItem("login_id", this.objlogin.email);
+                localStorage.setItem("email", this.objlogin.email);
                 this.router.navigate(['/user-list'], { queryParams: this.queryParams });
+                this._snackBar.open("Welcome samcome", "", { duration: 1000 });
+            } else {
+                this._snackBar.open("Email or password dose not match.", "", { duration: 1000 });
             }
         }
+    }
+    displayStyle = "none";
+    openPopup() {
+        if (this.objlogin.remember_me == false) {
+            this.displayStyle = "block";
+        }
+    }
+
+
+    closePopup() {
+        this.displayStyle = "none";
     }
 }

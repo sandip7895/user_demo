@@ -247,3 +247,6 @@ p.small{
     height: 22px;
     width: 22px;
 }
+.header{
+    border-bottom: 1px solid #000 ;
+}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/_services/user.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatTableDataSource } from '@angular/material';
 // import { PagerService } from 'src/app/_services/pager.service';
 
 
@@ -19,8 +19,9 @@ export class UserListComponent implements OnInit {
         private UserService: UserService,
         private state: TransferState,
         private _snackBar: MatSnackBar
-        // private pagerService: PagerService,
     ) { }
+
+
 
     ngOnInit() {
         this.getUsers();
@@ -31,20 +32,19 @@ export class UserListComponent implements OnInit {
 
     // public page = 1;
     // public limit = 50;
-
-    PageIndex: number = 1;
-    PageSize: number = 10;
-    flag: number = 1;
     pager: any = {};
 
     public firstLoading = true;
+    listData: MatTableDataSource<any>;
+    displayedColums: string[] = ['employee_name'];
     getUsers() {
         if (!this.isLoading) {
             this.isLoading = true;
 
-            this.UserService.userListing(this.PageIndex, this.PageSize).subscribe((response: any) => {
-                if (response.data != "") {
+            this.UserService.userListing().subscribe((response: any) => {
+                if (response.status == "success") {
                     this.users = response.data;
+                    this.listData = new MatTableDataSource(this.users);
                 }
                 else {
                 }
@@ -52,21 +52,20 @@ export class UserListComponent implements OnInit {
             });
         }
     }
-    logout() {
-        localStorage.setItem("login_id", "");
-        this.router.navigate(['']);
-    }
 
-    Deletedealer(id) {
+    Deletedealer(i) {
         if (confirm("Are you sure want to delete this record?")) {
-            this.UserService.deleteuser(id).subscribe((response: any) => {
-                if (response.data) {
-                    this._snackBar.open("Deleted successfully.", "", { duration: 100000 });
-                }
-                else {
-                    this._snackBar.open("Somthing went wrong! please try again!", "", { duration: 1000 });
-                }
-            });
+            this.users.splice(i, 1);
+            this._snackBar.open("Deleted successfully.", "", { duration: 100000 });
+            // this.UserService.deleteuser(id).subscribe((response: any) => {
+            //     if (response.data) {
+            //         this.users = this.users.splice(i, id);
+            //         this._snackBar.open("Deleted successfully.", "", { duration: 100000 });
+            //     }
+            //     else {
+            //         this._snackBar.open("Somthing went wrong! please try again!", "", { duration: 1000 });
+            //     }
+            // });
         }
     }
 }
